@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wachid Daga Suryono — NLP Researcher, Data Scientist & Developer. M.Kom from Universitas Amikom Yogyakarta. 5+ publications, freelance available.">
+<title>Wachid Daga Suryono — NLP Researcher & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { background: #f7f4ef; color: #1a1714; font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.75; overflow-x: hidden; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes countUp { from{opacity:0} to{opacity:1} }
+
+  .anim-section { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .anim-section.visible { opacity: 1; transform: translateY(0); }
+  .anim-section.d100 { transition-delay: .1s; }
+  .anim-section.d200 { transition-delay: .2s; }
+  .anim-section.d300 { transition-delay: .3s; }
+
+  /* ── NAV ── */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 60px; height: 64px;
+    background: transparent;
+    transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+  }
+  #navbar.scrolled {
+    background: rgba(15,13,11,.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: #f7f4ef; letter-spacing: -.02em; text-decoration: none; }
+  .nav-brand span { color: #c1440e; }
+  .nav-links { display: flex; gap: 0; }
+  .nav-links a {
+    padding: 6px 14px; font-size: 12px; font-weight: 500; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .05em; text-transform: capitalize; text-decoration: none;
+    color: rgba(247,244,239,.45); border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .nav-links a:hover { color: rgba(247,244,239,.85); }
+  .nav-links a.active { color: #e8c49a; border-bottom-color: #c1440e; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh; background: #0f0d0b;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .hero-glow1 { position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(193,68,14,.12),transparent 70%);pointer-events:none; }
+  .hero-glow2 { position:absolute;bottom:-10%;left:20%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(29,78,137,.1),transparent 70%);pointer-events:none; }
+  .hero-line  { position:absolute;top:0;right:35%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(193,68,14,.2),transparent);pointer-events:none; }
+  .hero-grain { position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .hero-inner {
+    flex: 1; display: grid; grid-template-columns: 1fr auto;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    padding: 100px 60px 60px; gap: 80px;
+    position: relative; z-index: 2; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(193,68,14,.1); border: 1px solid rgba(193,68,14,.3);
+    border-radius: 20px; padding: 5px 14px; margin-bottom: 28px;
+    animation: fadeUp .6s ease .1s both;
+  }
+  .hero-badge-dot { width:6px;height:6px;border-radius:50%;background:#c1440e;animation:pulse 2s ease infinite; }
+  .hero-badge-text { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c1440e; }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem,6vw,5.5rem); font-weight: 700;
+    color: #f7f4ef; line-height: 1; letter-spacing: -.03em;
+    animation: fadeUp .6s ease .2s both;
+  }
+  .hero-name .accent { color: #c1440e; font-style: italic; }
+  .hero-name sup { font-family:'JetBrains Mono',monospace;font-size:.22em;color:rgba(247,244,239,.4);letter-spacing:.05em;vertical-align:super;margin-left:6px; }
+  .hero-bio { color:rgba(247,244,239,.5);font-size:15px;max-width:480px;line-height:1.75;margin:24px 0 36px;animation:fadeUp .6s ease .35s both; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:10px;animation:fadeUp .6s ease .5s both; }
+  .hero-tag { font-size:11px;font-family:'JetBrains Mono',monospace;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(247,244,239,.6); }
+  .hero-contacts { display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:fadeUp .6s ease .6s both; }
+  .hero-contact { display:flex;align-items:center;gap:7px;color:rgba(247,244,239,.5);text-decoration:none;font-size:13px;font-family:'JetBrains Mono',monospace;transition:color .2s; }
+  .hero-contact:hover { color:#e8c49a; }
+
+  /* Stats column */
+  .hero-stats {
+    display: grid; grid-template-rows: repeat(4,1fr);
+    border: 1px solid rgba(255,255,255,.07); border-radius: 16px; overflow: hidden;
+    min-width: 160px; animation: fadeUp .7s ease .4s both;
+  }
+  .stat-cell { text-align:center;padding:24px 16px;border-bottom:1px solid rgba(255,255,255,.06); }
+  .stat-cell:last-child { border-bottom:none; }
+  .stat-num { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#e8c49a;line-height:1;display:block; }
+  .stat-label { font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;letter-spacing:.1em;text-transform:uppercase; }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+  .section-label { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#c1440e;margin-bottom:8px; }
+  .section-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#1a1714;line-height:1.1;letter-spacing:-.02em; }
+  .section-title.light { color:#f7f4ef; }
+  .section-rule { width:48px;height:3px;background:#c1440e;margin-top:16px;margin-bottom:40px;border-radius:2px; }
+
+  /* ── ABOUT ── */
+  #about { background:#f7f4ef;padding:100px 0; }
+  .about-grid { display:grid;grid-template-columns:3fr 2fr;gap:60px;align-items:start; }
+  .about-body { font-family:'Source Serif 4',serif;font-size:17px;color:#3a3530;line-height:1.85;margin-bottom:24px; }
+  .about-body2 { font-family:'Source Serif 4',serif;font-size:16px;color:#6b6560;line-height:1.85;margin-bottom:32px; }
+  .about-quote { background:#1a1714;border-radius:16px;padding:28px 32px; }
+  .about-quote p { font-family:'Source Serif 4',serif;font-size:15px;color:rgba(247,244,239,.7);line-height:1.75;font-style:italic; }
+  .edu-label,.cert-label { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c1440e;margin-bottom:10px; }
+  .cert-label { margin-top:28px; }
+  .edu-card { background:#fff;border:1px solid #e8e2d8;border-radius:12px;padding:18px 20px;margin-bottom:10px; }
+  .edu-degree { font-weight:600;font-size:14px;color:#1a1714;margin-bottom:4px; }
+  .edu-inst { font-size:13px;color:#8a8278;margin-bottom:6px; }
+  .edu-gpa { font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700; }
+  .cert-item { display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e8e2d8;border-radius:8px;padding:10px 14px;font-size:13px;color:#4a4540;margin-bottom:8px; }
+  .cert-dot { width:6px;height:6px;border-radius:50%;background:#2d6a4f;flex-shrink:0; }
+
+  /* ── RESEARCH ── */
+  #research { background:#1a1714;padding:100px 0; }
+  .thesis-grid { display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:60px; }
+  .thesis-card { background:#242018;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden; }
+  .thesis-card::before { content:'';position:absolute;top:0;left:0;right:0;height:3px; }
+  .thesis-level { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:8px; }
+  .thesis-title { font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:#f7f4ef;line-height:1.35;margin-bottom:14px; }
+  .thesis-abstract { font-size:13px;color:rgba(247,244,239,.55);line-height:1.7;margin-bottom:16px; }
+  .thesis-tags { display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px; }
+  .thesis-highlight { font-family:'JetBrains Mono',monospace;font-size:12px;color:#e8c49a;font-weight:700;background:rgba(232,196,154,.08);border:1px solid rgba(232,196,154,.2);border-radius:8px;padding:8px 14px;display:inline-block; }
+  .pub-section-label { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:20px; }
+  .pub-list { display:flex;flex-direction:column;gap:2px; }
+  .pub-card { border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px 22px;cursor:pointer;transition:background .2s,border-color .2s; }
+  .pub-card:hover { border-color:rgba(255,255,255,.12); }
+  .pub-card.open { background:#2a2420;border-color:rgba(193,68,14,.3); }
+  .pub-card-inner { display:flex;align-items:flex-start;gap:18px; }
+  .pub-year { font-family:'JetBrains Mono',monospace;font-size:11px;color:#c1440e;background:rgba(193,68,14,.1);border:1px solid rgba(193,68,14,.25);border-radius:6px;padding:3px 8px;flex-shrink:0;margin-top:2px; }
+  .pub-body { flex:1; }
+  .pub-title { font-size:14px;font-weight:600;color:#f7f4ef;line-height:1.45;margin-bottom:4px; }
+  .pub-meta { font-size:13px;color:rgba(247,244,239,.5);font-style:italic;margin-bottom:8px;display:none; }
+  .pub-card.open .pub-meta { display:block; }
+  .pub-doi { color:#7db8d8; }
+  .pub-tags { display:flex;flex-wrap:wrap;gap:5px; }
+  .pub-chevron { color:rgba(255,255,255,.3);font-size:12px;flex-shrink:0;transition:transform .2s; }
+  .pub-card.open .pub-chevron { transform:rotate(180deg); }
+
+  /* ── TAGS ── */
+  .tag { font-size:11px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:20px;white-space:nowrap; }
+  .tag-blue  { background:rgba(29,78,137,.12);border:1px solid rgba(29,78,137,.3);color:#1d4e89; }
+  .tag-green { background:rgba(45,106,79,.12);border:1px solid rgba(45,106,79,.3);color:#2d6a4f; }
+  .tag-dark  { background:rgba(193,68,14,.1);border:1px solid rgba(193,68,14,.25);color:#c1440e; }
+
+  /* ── SERVICES ── */
+  #services { background:#f7f4ef;padding:100px 0; }
+  .services-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+  .service-card { background:#fff;border:1px solid #e8e2d8;border-radius:16px;padding:28px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default;position:relative;overflow:hidden; }
+  .service-card::after { content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#c1440e;transform:scaleX(0);transition:transform .25s; }
+  .service-card:hover { transform:translateY(-5px);box-shadow:0 12px 40px rgba(26,23,20,.1);border-color:rgba(193,68,14,.25); }
+  .service-card:hover::after { transform:scaleX(1); }
+  .service-icon { font-size:28px;margin-bottom:14px; }
+  .service-title { font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#1a1714;margin-bottom:10px; }
+  .service-desc { font-size:13px;color:#8a8278;line-height:1.7;margin-bottom:16px; }
+  .service-stack { font-family:'JetBrains Mono',monospace;font-size:11px;color:#1d4e89;border-top:1px solid #f0ece4;padding-top:12px; }
+
+  /* ── SKILLS ── */
+  #skills { background:#242018;padding:100px 0; }
+  .skills-grid { display:grid;grid-template-columns:1fr 1fr;gap:4px; }
+  .skill-group { background:#1a1714;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:24px 28px; }
+  .skill-group-label { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c1440e;margin-bottom:14px; }
+  .skill-chips { display:flex;flex-wrap:wrap;gap:8px; }
+  .skill-chip { font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(247,244,239,.75);transition:background .2s,color .2s,border-color .2s;cursor:default; }
+  .skill-chip:hover { background:#c1440e;color:#fff;border-color:#c1440e; }
+
+  /* ── PRICING ── */
+  #pricing { background:#f7f4ef;padding:100px 0; }
+  .pricing-intro { font-family:'Source Serif 4',serif;font-size:16px;color:#8a8278;margin-bottom:48px;max-width:560px;line-height:1.7; }
+  .pricing-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end; }
+  .price-card { background:#fff;border:1px solid #e8e2d8;border-radius:20px;padding:32px 28px; }
+  .price-card.featured { background:#1a1714;border-color:transparent;transform:scale(1.04);box-shadow:0 20px 60px rgba(26,23,20,.25);position:relative;overflow:hidden; }
+  .price-card.featured::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c1440e,#1d4e89); }
+  .price-tier { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8a8278;margin-bottom:8px; }
+  .price-card.featured .price-tier { color:rgba(247,244,239,.4); }
+  .price-amount { font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#1a1714;margin-bottom:4px; }
+  .price-card.featured .price-amount { color:#f7f4ef; }
+  .price-usd { font-family:'JetBrains Mono',monospace;font-size:12px;color:#c1440e;margin-bottom:24px; }
+  .price-list { list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid #f0ece4;padding-top:20px; }
+  .price-card.featured .price-list { border-top-color:rgba(255,255,255,.08); }
+  .price-list li { display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#6b6560; }
+  .price-card.featured .price-list li { color:rgba(247,244,239,.65); }
+  .price-check { color:#2d6a4f;flex-shrink:0;font-weight:700; }
+  .price-card.featured .price-check { color:#34d399; }
+  .pricing-note { text-align:center;margin-top:28px;font-family:'Source Serif 4',serif;font-size:13px;color:#8a8278;font-style:italic; }
+
+  /* ── CONTACT ── */
+  #contact { background:#0f0d0b;padding:100px 0; }
+  .contact-inner { text-align:center; }
+  .contact-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:#f7f4ef;letter-spacing:-.03em;margin:0 0 24px; }
+  .contact-title em { font-style:italic;color:#e8c49a; }
+  .contact-desc { font-family:'Source Serif 4',serif;font-size:17px;color:rgba(247,244,239,.5);max-width:480px;margin:0 auto 48px;line-height:1.75; }
+  .contact-btns { display:flex;justify-content:center;flex-wrap:wrap;gap:16px; }
+  .btn-primary { display:inline-flex;align-items:center;gap:8px;background:#c1440e;color:#fff;border-radius:10px;padding:14px 28px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s; }
+  .btn-primary:hover { background:#a0360b; }
+  .btn-secondary { display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);color:rgba(247,244,239,.8);border-radius:10px;padding:14px 28px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:background .2s; }
+  .btn-secondary:hover { background:rgba(255,255,255,.1); }
+
+  /* ── FOOTER ── */
+  footer { background:#0a0806;border-top:1px solid rgba(255,255,255,.04);padding:24px 60px;display:flex;justify-content:space-between;align-items:center; }
+  .footer-left { font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(247,244,239,.25); }
+  .footer-right { font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(247,244,239,.2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns:1fr;padding:100px 28px 60px; gap:40px; }
+    .hero-stats { grid-template-rows:unset;grid-template-columns:repeat(4,1fr);min-width:unset; }
+    .stat-cell { border-bottom:none;border-right:1px solid rgba(255,255,255,.06); }
+    .stat-cell:last-child { border-right:none; }
+    .about-grid { grid-template-columns:1fr; }
+    .thesis-grid { grid-template-columns:1fr; }
+    .services-grid { grid-template-columns:1fr 1fr; }
+    .skills-grid { grid-template-columns:1fr; }
+    .pricing-grid { grid-template-columns:1fr; }
+    .price-card.featured { transform:none; }
+    #navbar { padding:0 20px; }
+    .nav-links { display:none; }
+    .section-wrap { padding:0 28px; }
+    footer { padding:24px 28px;flex-direction:column;gap:8px;text-align:center; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns:1fr; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-brand" href="#home">W<span>.</span>Daga</a>
+  <div class="nav-links">
+    <a href="#home" class="active">home</a>
+    <a href="#about">about</a>
+    <a href="#research">research</a>
+    <a href="#services">services</a>
+    <a href="#skills">skills</a>
+    <a href="#pricing">pricing</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grain"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">Available for freelance work</span>
+      </div>
+      <h1 class="hero-name">
+        Wachid Daga<br>
+        <span class="accent">Suryono</span><sup>M.Kom</sup>
+      </h1>
+      <p class="hero-bio">Computer scientist specializing in Natural Language Processing for low-resource languages — particularly Javanese, spoken by 75M+ people yet critically underserved in modern NLP. Master's from Universitas Amikom Yogyakarta (GPA 3.68), with 5+ peer-reviewed publications and 7+ years of combined academic and industry experience.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">NLP · Low-Resource Languages</span>
+        <span class="hero-tag">Text Classification</span>
+        <span class="hero-tag">Sentiment Analysis</span>
+        <span class="hero-tag">Stemming Algorithms</span>
+        <span class="hero-tag">Machine Learning</span>
+        <span class="hero-tag">Time-Series Forecasting</span>
+        <span class="hero-tag">Data Visualization</span>
+        <span class="hero-tag">Web Development</span>
+      </div>
+      <div class="hero-contacts">
+        <a class="hero-contact" href="mailto:wachiddaga@gmail.com">✉ wachiddaga@gmail.com</a>
+        <a class="hero-contact" href="tel:+6285854421567">📱 +62 858-5442-1567</a>
+        <a class="hero-contact" href="https://www.linkedin.com/in/wachid-daga-30971a86/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+        <span class="hero-contact" style="cursor:default">📍 Indonesia · Remote</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell"><span class="stat-num" data-target="5" data-suffix="+">5+</span><div class="stat-label">Publications</div></div>
+      <div class="stat-cell"><span class="stat-num" data-target="7" data-suffix="+">7+</span><div class="stat-label">Years Exp.</div></div>
+      <div class="stat-cell"><span class="stat-num" data-target="3.68" data-decimal="2">3.68</span><div class="stat-label">Master's GPA</div></div>
+      <div class="stat-cell"><span class="stat-num" data-target="2" data-suffix="x">2x</span><div class="stat-label">Degrees</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">01 —</p>
+      <h2 class="section-title">About & Background</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="anim-section d100">
+        <p class="about-body">I'm a researcher and developer with a strong foothold in both <strong>academic NLP research</strong> and <strong>practical software development</strong>. My Master's thesis tackled one of Indonesia's most underrepresented computational linguistics challenges — processing Javanese text at scale.</p>
+        <p class="about-body2">Beyond research, I've worked as IT Staff at Universitas Muhammadiyah Surakarta, managing campus infrastructure and academic systems — which means I understand both the theory and the practical demands of real deployments.</p>
+        <div class="about-quote">
+          <p>"I bring the methodological rigor of academic research to every client project — proper evaluation metrics, reproducible pipelines, and well-documented deliverables. Not just results, but results you can trust."</p>
+        </div>
+      </div>
+      <div class="anim-section d200">
+        <p class="edu-label">Education</p>
+        <div class="edu-card" style="border-left:4px solid #c1440e">
+          <div class="edu-degree">M.Kom — Business Intelligence</div>
+          <div class="edu-inst">Universitas Amikom Yogyakarta</div>
+          <div class="edu-gpa" style="color:#c1440e">GPA 3.68 / 4.00 · 2025</div>
+        </div>
+        <div class="edu-card" style="border-left:4px solid #2d6a4f">
+          <div class="edu-degree">S.Kom — Informatics</div>
+          <div class="edu-inst">Universitas Sebelas Maret</div>
+          <div class="edu-gpa" style="color:#8a8278">GPA 3.13 / 4.00 · 2016</div>
+        </div>
+        <p class="cert-label">Certifications</p>
+        <div class="cert-item"><span class="cert-dot" style="background:#1d4e89"></span>Junior Programmer — BNSP</div>
+        <div class="cert-item"><span class="cert-dot" style="background:#2d6a4f"></span>Graphic Design — BNSP</div>
+        <div class="cert-item"><span class="cert-dot" style="background:#c1440e"></span>Network Administration — BNSP</div>
+        <div class="cert-item"><span class="cert-dot" style="background:#8b5cf6"></span>MTCNA — MikroTik Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">02 —</p>
+      <h2 class="section-title light">Research & Publications</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="thesis-grid">
+      <div class="anim-section d100 thesis-card" style="--tc:#1d4e89">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1d4e89,transparent)"></div>
+        <p class="thesis-level">Master's Thesis · 2025 · Universitas Amikom Yogyakarta</p>
+        <h3 class="thesis-title">Comparative Analysis of Stemming for Javanese Text Using Levenshtein Distance and Jaro-Winkler Algorithms</h3>
+        <p class="thesis-abstract">Developed and compared two string similarity algorithms for stemming Javanese text. A hybrid approach combining both algorithms achieved 15–20% F-measure improvement over individual implementations. Contributed a custom annotated Javanese corpus for future NLP research.</p>
+        <div class="thesis-tags">
+          <span class="tag tag-blue">NLP</span>
+          <span class="tag tag-blue">Javanese</span>
+          <span class="tag tag-blue">Levenshtein</span>
+          <span class="tag tag-blue">Jaro-Winkler</span>
+          <span class="tag tag-blue">Low-Resource Language</span>
+        </div>
+        <div class="thesis-highlight">✦ 15–20% F-measure improvement</div>
+      </div>
+      <div class="anim-section d200 thesis-card">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2d6a4f,transparent)"></div>
+        <p class="thesis-level">Bachelor's Thesis · 2016 · Universitas Sebelas Maret</p>
+        <h3 class="thesis-title">Customer Complaint Classification System at UPT TIK UNS Using Naive Bayesian Classifier Algorithm</h3>
+        <p class="thesis-abstract">Built a full-stack complaint classification system using Naive Bayes + TF-IDF trained on 2,000+ records. Achieved 87.3% accuracy across 5 categories and reduced manual processing time from 5–10 minutes to under 1 minute.</p>
+        <div class="thesis-tags">
+          <span class="tag tag-green">Naive Bayes</span>
+          <span class="tag tag-green">TF-IDF</span>
+          <span class="tag tag-green">Text Classification</span>
+          <span class="tag tag-green">Web App</span>
+          <span class="tag tag-green">Laravel</span>
+        </div>
+        <div class="thesis-highlight">✦ 87.3% accuracy · 10× faster</div>
+      </div>
+    </div>
+    <div class="anim-section">
+      <p class="pub-section-label">Peer-Reviewed Publications & Conferences</p>
+      <div class="pub-list">
+        <div class="pub-card" onclick="togglePub(this)">
+          <div class="pub-card-inner">
+            <span class="pub-year">2025</span>
+            <div class="pub-body">
+              <div class="pub-title">Analisa Perbandingan Stemming Dokumen Teks Berbahasa Jawa dengan Algoritma Levenshtein Distance dan Jaro-Winkler</div>
+              <div class="pub-meta">JIPI — Jurnal Ilmiah Penelitian dan Pembelajaran Informatika · <span class="pub-doi">DOI: 10.29100/jipi.v10i1.6092</span></div>
+              <div class="pub-tags"><span class="tag tag-blue">NLP</span> <span class="tag tag-blue">Javanese</span></div>
+            </div>
+            <span class="pub-chevron">▾</span>
+          </div>
+        </div>
+        <div class="pub-card" onclick="togglePub(this)">
+          <div class="pub-card-inner">
+            <span class="pub-year">2022</span>
+            <div class="pub-body">
+              <div class="pub-title">Multi Variable Regresi sebagai Prediksi Area Terdampak Kebakaran Hutan</div>
+              <div class="pub-meta">IJAI — Indonesian Journal of Applied Informatics (UNS) · <span class="pub-doi">DOI: 10.20961/ijai.v6i2.58265</span></div>
+              <div class="pub-tags"><span class="tag tag-green">Regression</span> <span class="tag tag-green">Forecasting</span></div>
+            </div>
+            <span class="pub-chevron">▾</span>
+          </div>
+        </div>
+        <div class="pub-card" onclick="togglePub(this)">
+          <div class="pub-card-inner">
+            <span class="pub-year">2020</span>
+            <div class="pub-body">
+              <div class="pub-title">Comparative Analysis: Nazief-Adriani & Levenshtein Distance for Javanese News Similarity</div>
+              <div class="pub-meta">JNANALOKA Journal · Vol. 1, No. 2 · <span class="pub-doi">DOI: 10.36802/jnanaloka.2020.v1-no2-81-86</span></div>
+              <div class="pub-tags"><span class="tag tag-blue">NLP</span> <span class="tag tag-blue">Text Similarity</span></div>
+            </div>
+            <span class="pub-chevron">▾</span>
+          </div>
+        </div>
+        <div class="pub-card" onclick="togglePub(this)">
+          <div class="pub-card-inner">
+            <span class="pub-year">2018</span>
+            <div class="pub-body">
+              <div class="pub-title">Classification of Citizen Tweets Using Naive Bayes Classifier</div>
+              <div class="pub-meta">SNATII 2018 Conference Proceedings</div>
+              <div class="pub-tags"><span class="tag tag-dark">Conference</span> <span class="tag tag-green">Sentiment Analysis</span></div>
+            </div>
+            <span class="pub-chevron">▾</span>
+          </div>
+        </div>
+        <div class="pub-card" onclick="togglePub(this)">
+          <div class="pub-card-inner">
+            <span class="pub-year">2016</span>
+            <div class="pub-body">
+              <div class="pub-title">Sistem Klasifikasi Keluhan Pelanggan di UPT TIK UNS</div>
+              <div class="pub-meta">SENTIKA 2016 — Universitas Islam Indonesia</div>
+              <div class="pub-tags"><span class="tag tag-dark">Conference</span> <span class="tag tag-green">Classification</span></div>
+            </div>
+            <span class="pub-chevron">▾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">03 —</p>
+      <h2 class="section-title">Services</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="services-grid">
+      <div class="anim-section d100 service-card">
+        <div class="service-icon">⌨️</div>
+        <div class="service-title">NLP & Text Analysis</div>
+        <p class="service-desc">Text classification, sentiment analysis, stemming & tokenization — including Indonesian & Javanese language support.</p>
+        <div class="service-stack">Python · NLTK · spaCy · scikit-learn</div>
+      </div>
+      <div class="anim-section d200 service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Data Analysis & Modeling</div>
+        <p class="service-desc">Statistical analysis, regression, forecasting, and visualization with reproducible, well-documented pipelines.</p>
+        <div class="service-stack">Python · R · SPSS · Pandas · TensorFlow</div>
+      </div>
+      <div class="anim-section d300 service-card">
+        <div class="service-icon">📚</div>
+        <div class="service-title">Academic & Literature Review</div>
+        <p class="service-desc">Systematic reviews, comparative algorithm studies, methodology frameworks — written to publication standard.</p>
+        <div class="service-stack">IEEE · APA · Mendeley · LaTeX</div>
+      </div>
+      <div class="anim-section d100 service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-title">Web App Development</div>
+        <p class="service-desc">Full-stack research tools and ML dashboards. Clean architecture with comprehensive code documentation.</p>
+        <div class="service-stack">Laravel · Flask · Streamlit · PHP</div>
+      </div>
+      <div class="anim-section d200 service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-title">Market & UX Research</div>
+        <p class="service-desc">Structured research design, survey analysis, and actionable insight reporting for products and businesses.</p>
+        <div class="service-stack">Google Forms · Qualtrics · Excel</div>
+      </div>
+      <div class="anim-section d300 service-card">
+        <div class="service-icon">🖥️</div>
+        <div class="service-title">IT Infrastructure</div>
+        <p class="service-desc">Network administration and system management backed by BNSP certification and hands-on enterprise experience.</p>
+        <div class="service-stack">MikroTik · Linux · Windows Server</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">04 —</p>
+      <h2 class="section-title light">Technical Skills</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="anim-section d100 skill-group">
+        <p class="skill-group-label">Programming & ML</p>
+        <div class="skill-chips">
+          <span class="skill-chip">Python</span><span class="skill-chip">scikit-learn</span><span class="skill-chip">TensorFlow</span><span class="skill-chip">NLTK</span><span class="skill-chip">spaCy</span><span class="skill-chip">Pandas</span><span class="skill-chip">SQL</span>
+        </div>
+      </div>
+      <div class="anim-section d200 skill-group">
+        <p class="skill-group-label">Web Development</p>
+        <div class="skill-chips">
+          <span class="skill-chip">Laravel</span><span class="skill-chip">Flask</span><span class="skill-chip">Streamlit</span><span class="skill-chip">PHP</span><span class="skill-chip">JavaScript</span><span class="skill-chip">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="anim-section d100 skill-group">
+        <p class="skill-group-label">Data & Statistics</p>
+        <div class="skill-chips">
+          <span class="skill-chip">SPSS</span><span class="skill-chip">R</span><span class="skill-chip">Excel</span><span class="skill-chip">Regression</span><span class="skill-chip">Time-Series</span><span class="skill-chip">TF-IDF</span>
+        </div>
+      </div>
+      <div class="anim-section d200 skill-group">
+        <p class="skill-group-label">Networking & Systems</p>
+        <div class="skill-chips">
+          <span class="skill-chip">MikroTik</span><span class="skill-chip">Linux Admin</span><span class="skill-chip">Windows Server</span><span class="skill-chip">Network Admin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">05 —</p>
+      <h2 class="section-title">Pricing</h2>
+      <div class="section-rule"></div>
+      <p class="pricing-intro">Transparent, project-based rates. All packages are negotiable based on scope. International clients: USD rates available.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="anim-section d100 price-card">
+        <p class="price-tier">Starter</p>
+        <div class="price-amount">Rp 300rb+</div>
+        <div class="price-usd">~$20+</div>
+        <ul class="price-list">
+          <li><span class="price-check">✓</span>Literature review (10–15 papers)</li>
+          <li><span class="price-check">✓</span>Basic data analysis report</li>
+          <li><span class="price-check">✓</span>Survey design & summary</li>
+          <li><span class="price-check">✓</span>1 round of revision</li>
+        </ul>
+      </div>
+      <div class="anim-section d200 price-card featured">
+        <p class="price-tier">Most Popular</p>
+        <div class="price-amount">Rp 800rb+</div>
+        <div class="price-usd">~$50+</div>
+        <ul class="price-list">
+          <li><span class="price-check">✓</span>NLP pipeline & text classification</li>
+          <li><span class="price-check">✓</span>Statistical modeling & evaluation</li>
+          <li><span class="price-check">✓</span>Full documentation & report</li>
+          <li><span class="price-check">✓</span>2 rounds of revision</li>
+        </ul>
+      </div>
+      <div class="anim-section d300 price-card">
+        <p class="price-tier">Enterprise</p>
+        <div class="price-amount">Rp 1,5jt+</div>
+        <div class="price-usd">~$100+</div>
+        <ul class="price-list">
+          <li><span class="price-check">✓</span>End-to-end ML system (Flask/Streamlit)</li>
+          <li><span class="price-check">✓</span>Full research report + methodology</li>
+          <li><span class="price-check">✓</span>Dashboard / web app development</li>
+          <li><span class="price-check">✓</span>3 rounds of revision</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pricing-note">All rates are negotiable based on project scope. International clients: USD rates available. Free initial consultation.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="anim-section contact-inner">
+      <p class="section-label" style="text-align:center">06 —</p>
+      <h2 class="contact-title">Let's work <em>together</em></h2>
+      <p class="contact-desc">Open to freelance research, NLP, data analysis, and development projects. Free initial consultation included.</p>
+      <div class="contact-btns">
+        <a href="mailto:wachiddaga@gmail.com" class="btn-primary">✉ wachiddaga@gmail.com</a>
+        <a href="https://www.linkedin.com/in/wachid-daga-30971a86/" target="_blank" rel="noreferrer" class="btn-secondary">🔗 LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-left">© 2025 Wachid Daga Suryono, M.Kom</span>
+  <span class="footer-right">NLP Researcher · Data Scientist · Developer</span>
+</footer>
+
+<script>
+// ── NAVBAR scroll behaviour
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectionIds = ['home','about','research','services','skills','pricing','contact'];
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  for (const id of [...sectionIds].reverse()) {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (active) active.classList.add('active');
+      break;
+    }
+  }
+});
+
+// ── SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.anim-section').forEach(el => observer.observe(el));
+
+// ── STAT COUNTERS
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const decimal = parseInt(el.dataset.decimal || '0');
+    let current = 0;
+    const steps = 60;
+    const step = target / steps;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = decimal > 0 ? current.toFixed(decimal) + suffix : Math.round(current) + suffix;
+      if (current >= target) clearInterval(timer);
+    }, 20);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+
+// ── PUBLICATION ACCORDION
+function togglePub(card) {
+  card.classList.toggle('open');
+}
+
+// ── SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
