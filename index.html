@@ -154,6 +154,44 @@
   .tag-green { background:rgba(45,106,79,.12);border:1px solid rgba(45,106,79,.3);color:#2d6a4f; }
   .tag-dark  { background:rgba(193,68,14,.1);border:1px solid rgba(193,68,14,.25);color:#c1440e; }
 
+  /* ── TEACHING ── */
+  #teaching { background:#f7f4ef;padding:100px 0; }
+  .teaching-intro { font-family:'Source Serif 4',serif;font-size:17px;color:#3a3530;line-height:1.85;margin-bottom:48px;max-width:680px; }
+  .inst-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:56px; }
+  .inst-card { background:#fff;border:1px solid #e8e2d8;border-radius:16px;padding:28px 24px;text-align:center;transition:transform .25s,box-shadow .25s,border-color .25s; }
+  .inst-card:hover { transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,23,20,.09);border-color:#c1440e40; }
+  .inst-logo { width:100%;max-width:140px;height:72px;object-fit:contain;margin:0 auto 16px;display:block;filter:grayscale(20%); }
+  .inst-logo-svg { width:140px;height:72px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center; }
+  .inst-name { font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#1a1714;margin-bottom:4px;line-height:1.3; }
+  .inst-role { font-size:12px;font-family:'JetBrains Mono',monospace;color:#c1440e;letter-spacing:.08em;margin-bottom:10px;text-transform:uppercase; }
+  .inst-period { font-size:12px;color:#8a8278;font-family:'JetBrains Mono',monospace; }
+  .inst-badge { display:inline-block;font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:20px;margin-top:10px; }
+  .inst-badge.active { background:rgba(45,106,79,.1);border:1px solid rgba(45,106,79,.3);color:#2d6a4f; }
+  .inst-badge.past { background:rgba(138,130,120,.1);border:1px solid rgba(138,130,120,.3);color:#8a8278; }
+  .courses-label { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c1440e;margin-bottom:16px; }
+  .courses-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
+  @media (max-width:900px) { .inst-grid { grid-template-columns:repeat(2,1fr) !important; } }
+  .course-item { background:#fff;border:1px solid #e8e2d8;border-radius:10px;padding:14px 16px; }
+  .course-name { font-size:13px;font-weight:600;color:#1a1714;margin-bottom:4px; }
+  .course-inst { font-size:11px;font-family:'JetBrains Mono',monospace;color:#c1440e; }
+  .course-desc { font-size:12px;color:#8a8278;margin-top:4px;line-height:1.55; }
+
+  /* ── PRODUCTS ── */
+  #products { background:#1a1714;padding:100px 0; }
+  .products-intro { font-family:'Source Serif 4',serif;font-size:16px;color:rgba(247,244,239,.55);line-height:1.8;margin-bottom:48px;max-width:600px; }
+  .products-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:20px; }
+  .product-card { background:#242018;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s; }
+  .product-card:hover { border-color:rgba(193,68,14,.35);transform:translateY(-3px); }
+  .product-card::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pc,#c1440e),transparent); }
+  .product-icon-wrap { width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;flex-shrink:0; }
+  .product-name { font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f7f4ef;margin-bottom:10px;line-height:1.25; }
+  .product-tagline { font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pc,#c1440e);margin-bottom:14px; }
+  .product-desc { font-size:14px;color:rgba(247,244,239,.55);line-height:1.75;margin-bottom:20px; }
+  .product-features { display:flex;flex-direction:column;gap:6px;margin-bottom:20px; }
+  .product-feature { display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(247,244,239,.65);line-height:1.5; }
+  .product-feature::before { content:'▸';color:var(--pc,#c1440e);flex-shrink:0;margin-top:1px; }
+  .product-stack { font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(247,244,239,.3);border-top:1px solid rgba(255,255,255,.06);padding-top:14px;margin-top:auto; }
+
   /* ── SERVICES ── */
   #services { background:#f7f4ef;padding:100px 0; }
   .services-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
@@ -244,6 +282,8 @@
     <a href="#home" class="active">home</a>
     <a href="#about">about</a>
     <a href="#research">research</a>
+    <a href="#teaching">teaching</a>
+    <a href="#products">products</a>
     <a href="#services">services</a>
     <a href="#skills">skills</a>
     <a href="#pricing">pricing</a>
@@ -433,11 +473,301 @@
   </div>
 </section>
 
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">03 — Teaching</p>
+      <h2 class="section-title">Academic <em>Appointments</em></h2>
+      <div class="section-rule"></div>
+      <p class="teaching-intro">Selain aktif sebagai peneliti dan pengembang perangkat lunak, saya mengemban tanggung jawab sebagai pengajar di lima institusi pendidikan tinggi — mulai dari Bali, Jakarta, hingga Surakarta — dengan mengintegrasikan rigor akademis dan pengalaman industri nyata ke dalam setiap sesi perkuliahan.</p>
+    </div>
+
+    <!-- Institution Cards -->
+    <div class="inst-grid">
+
+      <!-- 1. BIM -->
+      <div class="anim-section d100 inst-card">
+        <img class="inst-logo" src="https://bim.ac.id/wp-content/uploads/2026/07/Logo-BIM-Baru-Hitam-2-scaled.png"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="BIM University" loading="lazy">
+        <div class="inst-logo-svg" style="display:none">
+          <svg viewBox="0 0 200 60" width="160" height="48">
+            <rect x="0" y="8" width="44" height="44" rx="8" fill="#1a1714"/>
+            <text x="22" y="36" text-anchor="middle" fill="#f7f4ef" style="font-family:Georgia,serif;font-size:20px;font-weight:700">B</text>
+            <text x="52" y="30" fill="#1a1714" style="font-family:Georgia,serif;font-size:16px;font-weight:700">BIM</text>
+            <text x="52" y="48" fill="#8a8278" style="font-family:monospace;font-size:9px;letter-spacing:0.05em">University</text>
+          </svg>
+        </div>
+        <div class="inst-name">Universitas Bali Internasional Muhammadiyah</div>
+        <div class="inst-role">Dosen Tetap</div>
+        <div class="inst-period">📍 Denpasar, Bali · 2026 – Sekarang</div>
+        <span class="inst-badge active">● Aktif</span>
+        <div style="margin-top:12px;font-size:12px;color:#6b6560;line-height:1.6">
+          Mengampu mata kuliah di Program Studi Informatika & Sistem Informasi, meliputi kecerdasan buatan, NLP, dan pengembangan sistem berbasis data.
+        </div>
+      </div>
+
+      <!-- 2. Poltek BPI -->
+      <div class="anim-section d200 inst-card">
+        <img class="inst-logo"
+          src="https://poltekbpi.ac.id/wp-content/uploads/2022/09/logo-bpi.png"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="Politeknik Bisnis dan Perpajakan Indonesia" loading="lazy">
+        <div class="inst-logo-svg" style="display:none">
+          <svg viewBox="0 0 200 72" width="160" height="56">
+            <path d="M16,8 L56,8 L56,46 C56,58 36,66 36,66 C36,66 16,58 16,46 Z" fill="#0a5c9e"/>
+            <path d="M22,14 L50,14 L50,45 C50,54 36,61 36,61 C36,61 22,54 22,45 Z" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.35"/>
+            <text x="36" y="43" text-anchor="middle" fill="#fff" style="font-family:Georgia,serif;font-size:13px;font-weight:700">BPI</text>
+            <text x="66" y="24" fill="#0a5c9e" style="font-family:Arial,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.03em">POLITEKNIK BISNIS</text>
+            <text x="66" y="38" fill="#0a5c9e" style="font-family:Arial,sans-serif;font-size:9.5px;font-weight:700">DAN PERPAJAKAN</text>
+            <text x="66" y="52" fill="#0a5c9e" style="font-family:Arial,sans-serif;font-size:9.5px;font-weight:700">INDONESIA</text>
+          </svg>
+        </div>
+        <div class="inst-name">Politeknik Bisnis dan Perpajakan Indonesia</div>
+        <div class="inst-role">Dosen Pengajar</div>
+        <div class="inst-period">📍 Jakarta · 2026 – Sekarang</div>
+        <span class="inst-badge active">● Aktif</span>
+        <div style="margin-top:12px;font-size:12px;color:#6b6560;line-height:1.6">
+          Mengajar di Program Studi Manajemen Informatika & Teknologi Informasi, berfokus pada pemrograman aplikasi, basis data, dan pengembangan sistem informasi bisnis.
+        </div>
+      </div>
+
+      <!-- 3. FKIP UNS -->
+      <div class="anim-section d300 inst-card">
+        <img class="inst-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UNS_logo.svg/220px-UNS_logo.svg.png"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="FKIP Universitas Sebelas Maret" loading="lazy">
+        <div class="inst-logo-svg" style="display:none">
+          <svg viewBox="0 0 200 60" width="160" height="48">
+            <circle cx="28" cy="30" r="24" fill="none" stroke="#003580" stroke-width="2.5"/>
+            <text x="28" y="35" text-anchor="middle" fill="#003580" style="font-family:Georgia,serif;font-size:14px;font-weight:700">UNS</text>
+            <text x="60" y="22" fill="#003580" style="font-family:Georgia,serif;font-size:11px;font-weight:700">FKIP</text>
+            <text x="60" y="36" fill="#003580" style="font-family:Georgia,serif;font-size:11px;font-weight:700">Sebelas Maret</text>
+            <text x="60" y="50" fill="#8a8278" style="font-family:monospace;font-size:9px">Surakarta</text>
+          </svg>
+        </div>
+        <div class="inst-name">FKIP — Universitas Sebelas Maret</div>
+        <div class="inst-role">Dosen Pengajar</div>
+        <div class="inst-period">📍 Surakarta, Jawa Tengah</div>
+        <span class="inst-badge active">● Aktif</span>
+        <div style="margin-top:12px;font-size:12px;color:#6b6560;line-height:1.6">
+          Mengajar di Fakultas Keguruan dan Ilmu Pendidikan, mengintegrasikan teknologi informasi dan metode pembelajaran berbasis data ke dalam kurikulum pendidikan.
+        </div>
+      </div>
+
+      <!-- 4. UNS Alumni -->
+      <div class="anim-section d100 inst-card">
+        <img class="inst-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UNS_logo.svg/220px-UNS_logo.svg.png"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="Universitas Sebelas Maret" loading="lazy">
+        <div class="inst-logo-svg" style="display:none">
+          <svg viewBox="0 0 200 60" width="160" height="48">
+            <circle cx="28" cy="30" r="24" fill="none" stroke="#003580" stroke-width="2.5"/>
+            <text x="28" y="35" text-anchor="middle" fill="#003580" style="font-family:Georgia,serif;font-size:14px;font-weight:700">UNS</text>
+            <text x="60" y="26" fill="#003580" style="font-family:Georgia,serif;font-size:12px;font-weight:700">Sebelas Maret</text>
+            <text x="60" y="42" fill="#8a8278" style="font-family:monospace;font-size:9px">Surakarta</text>
+          </svg>
+        </div>
+        <div class="inst-name">Universitas Sebelas Maret</div>
+        <div class="inst-role">Alumni S1 Informatika</div>
+        <div class="inst-period">📍 Surakarta, Jawa Tengah · 2016</div>
+        <span class="inst-badge past">Almamater S1</span>
+        <div style="margin-top:12px;font-size:12px;color:#6b6560;line-height:1.6">
+          Lulus S.Kom dari Program Studi Informatika. Skripsi tentang klasifikasi keluhan pelanggan dipresentasikan di SENTIKA 2016 dan SNATII 2018.
+        </div>
+      </div>
+
+      <!-- 5. UMS — IT Staff + Dosen -->
+      <div class="anim-section d200 inst-card">
+        <img class="inst-logo"
+          src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e8/Lambang_UMS.png/220px-Lambang_UMS.png"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="Universitas Muhammadiyah Surakarta" loading="lazy">
+        <div class="inst-logo-svg" style="display:none">
+          <svg viewBox="0 0 200 60" width="160" height="48">
+            <circle cx="28" cy="30" r="24" fill="none" stroke="#006400" stroke-width="2.5"/>
+            <text x="28" y="35" text-anchor="middle" fill="#006400" style="font-family:Georgia,serif;font-size:13px;font-weight:700">UMS</text>
+            <text x="60" y="22" fill="#006400" style="font-family:Georgia,serif;font-size:11px;font-weight:700">Muhammadiyah</text>
+            <text x="60" y="36" fill="#006400" style="font-family:Georgia,serif;font-size:11px;font-weight:700">Surakarta</text>
+          </svg>
+        </div>
+        <div class="inst-name">Universitas Muhammadiyah Surakarta</div>
+        <!-- Dual role badges -->
+        <div style="display:flex;flex-direction:column;gap:4px;margin:6px 0">
+          <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#2d6a4f;letter-spacing:.06em;text-transform:uppercase">🖥 Staf IT Kampus</div>
+          <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#c1440e;letter-spacing:.06em;text-transform:uppercase">🎓 Dosen Pengajar</div>
+        </div>
+        <div class="inst-period">📍 Surakarta, Jawa Tengah · 2017 – 2024</div>
+        <span class="inst-badge past">Dual Role</span>
+        <div style="margin-top:12px;font-size:12px;color:#6b6560;line-height:1.65">
+          <strong style="color:#4a4540">Staf IT:</strong> Mengelola infrastruktur jaringan kampus, sistem informasi akademik, dan pengembangan aplikasi internal.<br><br>
+          <strong style="color:#4a4540">Dosen:</strong> Mengampu mata kuliah pemrograman dan basis data di Fakultas Teknik & Ilmu Komputer.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Courses Taught -->
+    <div class="anim-section">
+      <p class="courses-label">Mata Kuliah yang Diampu</p>
+      <div class="courses-grid">
+        <div class="course-item">
+          <div class="course-name">Pemrograman Python & Data Science</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Dasar Python, manipulasi data dengan Pandas, visualisasi dan analisis statistik deskriptif.</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Kecerdasan Buatan & Machine Learning</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Algoritma klasifikasi, regresi, clustering, dan pengantar deep learning menggunakan scikit-learn & TensorFlow.</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Natural Language Processing</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Pemrosesan teks, stemming, tokenisasi, sentiment analysis, dan text classification untuk bahasa Indonesia.</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Pemrograman Web & Basis Data</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Pengembangan aplikasi web berbasis PHP/Laravel, desain database relasional, dan RESTful API.</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Sistem Informasi Manajemen</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Analisis kebutuhan sistem, perancangan SIM, implementasi dan evaluasi sistem informasi organisasi.</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Metodologi Penelitian Informatika</div>
+          <div class="course-inst">BIM University</div>
+          <div class="course-desc">Penyusunan proposal riset, metode eksperimen komputasi, analisis hasil, dan penulisan karya ilmiah.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #0a5c9e">
+          <div class="course-name">Pemrograman Berorientasi Objek</div>
+          <div class="course-inst" style="color:#0a5c9e">Politeknik Bisnis & Perpajakan Indonesia</div>
+          <div class="course-desc">Konsep OOP, desain class & inheritance, implementasi menggunakan Java dan Python untuk aplikasi bisnis nyata.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #0a5c9e">
+          <div class="course-name">Basis Data & SQL</div>
+          <div class="course-inst" style="color:#0a5c9e">Politeknik Bisnis & Perpajakan Indonesia</div>
+          <div class="course-desc">Perancangan ERD, normalisasi tabel, query SQL lanjutan, stored procedure, dan optimasi database relasional.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #0a5c9e">
+          <div class="course-name">Pengembangan Aplikasi Web</div>
+          <div class="course-inst" style="color:#0a5c9e">Politeknik Bisnis & Perpajakan Indonesia</div>
+          <div class="course-desc">Pengembangan aplikasi full-stack berbasis PHP/Laravel, integrasi API, dan penerapan best practice keamanan web.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #003580">
+          <div class="course-name">Teknologi Informasi dalam Pendidikan</div>
+          <div class="course-inst" style="color:#003580">FKIP — Universitas Sebelas Maret</div>
+          <div class="course-desc">Penerapan teknologi digital dalam proses pembelajaran, media ajar berbasis teknologi, dan literasi data untuk calon pendidik.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #003580">
+          <div class="course-name">Pemrograman & Logika Komputasi</div>
+          <div class="course-inst" style="color:#003580">FKIP — Universitas Sebelas Maret</div>
+          <div class="course-desc">Dasar algoritma, pemecahan masalah komputasional, dan pengantar pemrograman Python untuk mahasiswa kependidikan.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #006400">
+          <div class="course-name">Pemrograman Web Lanjutan</div>
+          <div class="course-inst" style="color:#006400">Universitas Muhammadiyah Surakarta</div>
+          <div class="course-desc">Framework PHP modern, arsitektur MVC, REST API, autentikasi berbasis token, dan deployment aplikasi web.</div>
+        </div>
+        <div class="course-item" style="border-left:3px solid #006400">
+          <div class="course-name">Sistem Basis Data</div>
+          <div class="course-inst" style="color:#006400">Universitas Muhammadiyah Surakarta</div>
+          <div class="course-desc">Desain dan implementasi database, manajemen transaksi, integrasi aplikasi, dan optimasi query untuk sistem skala besar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-wrap">
+    <div class="anim-section">
+      <p class="section-label">04 — Products</p>
+      <h2 class="section-title light">Software <em>Products</em></h2>
+      <div class="section-rule"></div>
+      <p class="products-intro">Rangkaian produk perangkat lunak yang dirancang dan dikembangkan untuk menjawab tantangan nyata di lingkungan akademis dan operasional — dari otomasi administrasi hingga sistem berbasis kecerdasan buatan.</p>
+    </div>
+    <div class="products-grid">
+
+      <!-- Product 1: Peminjaman Ruang -->
+      <div class="anim-section d100 product-card" style="--pc:#1d4e89">
+        <div class="product-icon-wrap" style="background:rgba(29,78,137,.15)">🏫</div>
+        <div class="product-tagline">Room Management System</div>
+        <h3 class="product-name">SmartSpace — Sistem Manajemen Peminjaman Ruang</h3>
+        <p class="product-desc">Platform terintegrasi untuk pengelolaan dan peminjaman fasilitas ruang secara digital. Menggantikan proses manual yang rawan konflik jadwal dengan sistem real-time berbasis web yang transparan dan efisien, memungkinkan seluruh civitas akademika mengajukan, menyetujui, dan memantau ketersediaan ruang kapan saja dan dari mana saja.</p>
+        <div class="product-features">
+          <div class="product-feature">Kalender ketersediaan ruang real-time dengan deteksi konflik otomatis</div>
+          <div class="product-feature">Alur persetujuan multi-level (pengaju → penanggung jawab → admin)</div>
+          <div class="product-feature">Notifikasi otomatis via email dan WhatsApp</div>
+          <div class="product-feature">Laporan penggunaan ruang dan statistik pemanfaatan fasilitas</div>
+          <div class="product-feature">Dashboard admin untuk monitoring seluruh peminjaman aktif</div>
+        </div>
+        <div class="product-stack">Laravel · MySQL · FullCalendar.js · WhatsApp API</div>
+      </div>
+
+      <!-- Product 2: Sistem SKL -->
+      <div class="anim-section d200 product-card" style="--pc:#2d6a4f">
+        <div class="product-icon-wrap" style="background:rgba(45,106,79,.15)">🎓</div>
+        <div class="product-tagline">Academic Certificate System</div>
+        <h3 class="product-name">CertifyEdu — Sistem Penerbitan Surat Keterangan Lulus (SKL)</h3>
+        <p class="product-desc">Sistem otomasi penerbitan dan verifikasi Surat Keterangan Lulus yang menggantikan proses birokrasi konvensional. Mahasiswa dapat mengajukan SKL secara online, melacak statusnya secara langsung, dan menerima dokumen resmi ber-QR Code yang dapat diverifikasi keasliannya oleh pihak ketiga kapan saja — mempercepat proses yang sebelumnya memakan waktu berhari-hari menjadi hitungan jam.</p>
+        <div class="product-features">
+          <div class="product-feature">Portal pengajuan mandiri berbasis web untuk mahasiswa</div>
+          <div class="product-feature">Validasi data otomatis dengan integrasi sistem akademik</div>
+          <div class="product-feature">Penerbitan dokumen PDF resmi dengan tanda tangan digital</div>
+          <div class="product-feature">QR Code unik untuk verifikasi keaslian dokumen secara publik</div>
+          <div class="product-feature">Tracking status pengajuan secara real-time</div>
+        </div>
+        <div class="product-stack">Laravel · FPDF/DomPDF · QR Code Generator · MySQL</div>
+      </div>
+
+      <!-- Product 3: Surat Riset -->
+      <div class="anim-section d100 product-card" style="--pc:#c1440e">
+        <div class="product-icon-wrap" style="background:rgba(193,68,14,.15)">📋</div>
+        <div class="product-tagline">Research Administration System</div>
+        <h3 class="product-name">ResearchGate Admin — Sistem Manajemen Surat Izin Riset</h3>
+        <p class="product-desc">Sistem manajemen dokumen terpusat untuk pengelolaan surat izin penelitian, proposal riset, dan dokumen administratif akademik. Dirancang khusus untuk memudahkan mahasiswa dalam mengurus perizinan penelitian lapangan, sekaligus memberikan lembaga kemampuan monitoring dan pengarsipan dokumen secara sistematis dan terstruktur.</p>
+        <div class="product-features">
+          <div class="product-feature">Formulir pengajuan surat riset yang terstandarisasi</div>
+          <div class="product-feature">Alur review dan pengesahan oleh dosen pembimbing & pejabat terkait</div>
+          <div class="product-feature">Arsip digital dokumen riset yang dapat dicari dan difilter</div>
+          <div class="product-feature">Template surat resmi yang dapat dikustomisasi per kebutuhan</div>
+          <div class="product-feature">Laporan rekap pengajuan surat per periode dan per program studi</div>
+        </div>
+        <div class="product-stack">Laravel · MySQL · PDF Export · Role-Based Access Control</div>
+      </div>
+
+      <!-- Product 4: Bot Assistant -->
+      <div class="anim-section d200 product-card" style="--pc:#8b5cf6">
+        <div class="product-icon-wrap" style="background:rgba(139,92,246,.15)">🤖</div>
+        <div class="product-tagline">AI-Powered Intelligent Assistant</div>
+        <h3 class="product-name">AssistAI — Bot Asisten Cerdas Manajemen Organisasi</h3>
+        <p class="product-desc">Asisten berbasis kecerdasan buatan yang dirancang untuk mentransformasi cara organisasi mengelola informasi hariannya. Terintegrasi langsung dengan platform komunikasi populer (Telegram & WhatsApp), bot ini mampu mencatat, mengorganisasi, dan merangkum berbagai informasi penting — dari agenda rapat hingga laporan keuangan — menggunakan pemrosesan bahasa alami sehingga terasa seperti berinteraksi dengan sekretaris digital yang cerdas dan selalu siap sedia 24/7.</p>
+        <div class="product-features">
+          <div class="product-feature"><strong style="color:rgba(247,244,239,.8)">Manajemen Agenda:</strong> pencatatan jadwal, pengingat otomatis, dan ringkasan agenda harian/mingguan</div>
+          <div class="product-feature"><strong style="color:rgba(247,244,239,.8)">Pencatatan Keuangan:</strong> input transaksi via chat, kategorisasi otomatis, dan laporan keuangan on-demand</div>
+          <div class="product-feature"><strong style="color:rgba(247,244,239,.8)">Log Kegiatan:</strong> dokumentasi kegiatan organisasi dengan tagging otomatis dan pencarian semantik</div>
+          <div class="product-feature"><strong style="color:rgba(247,244,239,.8)">Manajemen Dokumen:</strong> penyimpanan dan retrieval dokumen berbasis perintah bahasa natural</div>
+          <div class="product-feature">Dashboard web untuk visualisasi data dan ekspor laporan</div>
+        </div>
+        <div class="product-stack">Python · Flask · Telegram Bot API · WhatsApp API · NLP · SQLite/PostgreSQL</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="section-wrap">
     <div class="anim-section">
-      <p class="section-label">03 —</p>
+      <p class="section-label">05 —</p>
       <h2 class="section-title">Services</h2>
       <div class="section-rule"></div>
     </div>
@@ -486,7 +816,7 @@
 <section id="skills">
   <div class="section-wrap">
     <div class="anim-section">
-      <p class="section-label">04 —</p>
+      <p class="section-label">06 —</p>
       <h2 class="section-title light">Technical Skills</h2>
       <div class="section-rule"></div>
     </div>
@@ -523,7 +853,7 @@
 <section id="pricing">
   <div class="section-wrap">
     <div class="anim-section">
-      <p class="section-label">05 —</p>
+      <p class="section-label">07 —</p>
       <h2 class="section-title">Pricing</h2>
       <div class="section-rule"></div>
       <p class="pricing-intro">Transparent, project-based rates. All packages are negotiable based on scope. International clients: USD rates available.</p>
@@ -571,7 +901,7 @@
 <section id="contact">
   <div class="section-wrap">
     <div class="anim-section contact-inner">
-      <p class="section-label" style="text-align:center">06 —</p>
+      <p class="section-label" style="text-align:center">08 —</p>
       <h2 class="contact-title">Let's work <em>together</em></h2>
       <p class="contact-desc">Open to freelance research, NLP, data analysis, and development projects. Free initial consultation included.</p>
       <div class="contact-btns">
@@ -592,7 +922,7 @@
 // ── NAVBAR scroll behaviour
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
-const sectionIds = ['home','about','research','services','skills','pricing','contact'];
+const sectionIds = ['home','about','research','teaching','products','services','skills','pricing','contact'];
 
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
